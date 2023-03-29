@@ -149,7 +149,6 @@ def dataStatistics(data, statistic):
     return result
 
 
-#Comments
 
 
     
