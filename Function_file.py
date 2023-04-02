@@ -8,16 +8,16 @@ def dataLoad(filename):
     
     try:
         data=np.loadtxt(filename)
+        print(chr(95)*30)
         print(f'Data loaded successfully from {filename}')
+        print(chr(8254)*30)
     
     except:
         if not filename.endswith('.txt'): #Check file data type
             print(f'{filename} needs to have .txt extension')
-        print(f'Error loading data from {filename}. Please try again')
-        return np.zeros(0)
+            print(f'Error loading data from {filename}. Please try again')
+        return None
         
-    
-    
     #Creating dictionary that assign the numeric code to bacteria
     bacteria_dict = {
     1: 'Salmonella enterica',
@@ -27,7 +27,9 @@ def dataLoad(filename):
 }
     #Creating empty matrix N x 3
     matrix=np.empty([0,3])
-    print(matrix)
+    #print(matrix)
+    
+    print('Description of error:')
     
     #Creating the loop which read the rows of the data 
     for i in range(len(data[:,0])):
