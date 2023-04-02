@@ -2,15 +2,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def dataLoad(filename):
-    print(f'dataLoad  of {filename} successfull')
     
-    #Importing txt file 
-    filein=filename
+    #Importing txt file
     
-    #Loading the data from the file into numpy array
-    data=np.loadtxt(filein)
+    try:
+        data=np.loadtxt(filename)
+        print(f'Data loaded successfully from {filename}')
     
-    #try function 
+    except:
+        if not filename.endswith('.txt'): #Check file data type
+            print(f'{filename} needs to have .txt extension')
+        print(f'Error loading data from {filename}. Please try again')
+        return np.zeros(0)
+        
+    
     
     #Creating dictionary that assign the numeric code to bacteria
     bacteria_dict = {
@@ -89,12 +94,13 @@ def dataStatistics(data, statistic):
 
 def dataPlot(data):
     #Plotting
-     #Plotting
-    with open('Filtered bacteria data.txt', 'r') as data:
+    
+    '''with open('Filtered bacteria data.txt', 'r') as data:
     # Read file contents
      filein = data.read()
-    
-    statsdata=np.loadtxt(filein)                         
+    statsdata=np.loadtxt(filein)'''   
+
+    statsdata=data                      
     # Creating a figure with two subplots
     fig,axs=plt.subplots(2,1,figsize=(12,6))
     
@@ -194,7 +200,8 @@ def dataPlot(data):
     # show the figure
     plt.show()
     
-    dataPlot(data)
+    #dataPlot(data)
+    return (dataPlot)
     
 
 
