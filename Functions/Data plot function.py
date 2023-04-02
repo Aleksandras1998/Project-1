@@ -1,52 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def dataStatistics(data, statistic):
+
+def dataPlot(data):
     
-    #Importing txt file
     filein=data
-    
-    #Loading the data from the file into numpy array
     statsdata=np.loadtxt(filein)
-       
-    #Creating if statements for stats calculations
-    if statistic == "Mean Temperature":
-        result=np.mean(statsdata[:,0])
-        
-    if statistic == "Mean Growth rate":
-        result=np.mean(statsdata[:,1])
-        
-    if statistic == "Std Temperature":
-        result=np.std(statsdata[:,0])
-        
-    if statistic == "Std Growth rate":
-        result=np.std(statsdata[:,1])
-        
-    if statistic == "Rows":
-        result=len(statsdata[:,0])
-        
-    if statistic == "Mean Cold Growth rate":
-        Coldgrowthrates=[]
-        for i in range(len(statsdata[:,0])):
-            if statsdata[i,0]<20:
-                Coldgrowthrate=[statsdata[i,1]]
-                Coldgrowthrates.append(Coldgrowthrate)
-        Coldgrowthrates=np.vstack(Coldgrowthrates)
-        result=np.mean(Coldgrowthrates)
-            
-        
-    if statistic == "Mean Hot Growth rate":
-        Hotgrowthrates=[]
-        for i in range(len(statsdata[:,0])):
-            if statsdata[i,0]>50:
-                Hotgrowthrate=[statsdata[i,1]]
-                Hotgrowthrates.append(Hotgrowthrate)
-        Hotgrowthrates=np.vstack(Hotgrowthrates)
-        result=np.mean(Hotgrowthrates)
-    
-    
+    print(statsdata)
                                     #Plotting
                                     
+                      
     # Creating a figure with two subplots
     fig,axs=plt.subplots(2,1,figsize=(12,6))
     
@@ -144,11 +107,6 @@ def dataStatistics(data, statistic):
     axs[1].legend()
     
     # show the figure
-    plt.show()
+    figures=plt.show()
     
-    return result
-
-
-
-
-    
+    return figures

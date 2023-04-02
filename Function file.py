@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+#Function №.1 - Data load function
 def dataLoad(filename):
     
     #Importing txt file
@@ -48,6 +49,8 @@ def dataLoad(filename):
     
     return matrix
 
+
+#Function №.2 - Data statistics function
 def saveData(filename, matrix):
     
     #Save the matrix data to a new text file
@@ -92,6 +95,7 @@ def dataStatistics(data, statistic):
         return np.mean(Hotgrowthrates)
 
 
+#Function №.3 - Data plot function
 def dataPlot(data):
     #Plotting
     
