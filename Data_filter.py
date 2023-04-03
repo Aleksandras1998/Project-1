@@ -32,7 +32,7 @@ def filter_data(restricted_matrix, matrix):
                                                     f'[4] = {bacteria_dict[4] }\n' +
                                                     f'[5] Quit current menu\n'))
                 if user_inputBacteriatype not in restricted_matrix:
-                    print("Please select existing Bacteria type")
+                    print("Please select existing Bacteria type")  # Should be an option to override restricted_matrix to the new one, after I select another bacteria type
                     continue
                 elif user_inputBacteriatype == 5:
                     break

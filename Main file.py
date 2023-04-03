@@ -9,28 +9,45 @@ if __name__ == '__main__':
     matrix = np.zeros(0)
     restricted_matrix = np.zeros(0)
     
-    while True:
+    while True:                                                                 
         
         try:
-            user_input = int(input('Please insert a number from 1 to 5: \n'+
+            user_input = int(input('Enter a number from 1 to 5: \n'+
                                     '[1] LoadData\n' +
                                     '[2] Filter data\n' +
                                     '[3] Display statistics\n' +
                                     '[4] Generate plots\n' +
-                                    '[5] Quit\n'))
+                                    '[5] Quit\n'+
+                                    '>>'))
             if user_input> 5 or user_input < 1 :
-                raise ValueError('Please select a number from the filter menu')
-        except:
-             
-            print("Please insert a number in the selected range")
+                print()
+                raise ValueError('Please select a number from main menu')
+        except ValueError as e:
+            print(e)
        
             continue
-        if user_input == 5:
-            break
+    # while True:
+    #     user_input = int(input('Enter a number from 1 to 5: \n'+
+    #                            '[1] LoadData\n' +
+    #                            '[2] Filter data\n' +
+    #                            '[3] Display statistics\n' +
+    #                            '[4] Generate plots\n' +
+    #                            '[5] Quit\n'+
+    #                            '>>'))
+    #     if user_input < 1 or user_input > 5:
+    #         print("Please select a number from the filter menu")
+    #         continue
+    # # handle valid input here
+
+        
+        '''if user_input == 5:
+            print('Quit programme')
+            break'''
 
         if user_input == 1: #LoadData to analise
             
             matrix = load_data()
+            #print(matrix)
             restricted_matrix = np.copy(matrix)
 
             
@@ -39,13 +56,14 @@ if __name__ == '__main__':
                 print("Please load data before continuing")
             else:
                 restricted_matrix = filter_data(restricted_matrix, matrix)
+                
         elif user_input == 3: #display Statistics in the selected range
             if len(matrix)== 0 :
                 print("Please load data before continuing")
             else:
                 statistic = ["Mean Temperature",
                     "Mean Growth rate","Std Temperature","Std Growth rate","Rows","Mean Cold Growth rate",
-                    "Mean Hot Growth rate\n"]
+                    "Mean Hot Growth rate"]
                 while True:
                     user_inputstatistics = int(input('Please select what statistical function to display\n'+
                                     "[1] Mean Temperature\n" +
@@ -74,6 +92,10 @@ if __name__ == '__main__':
                 print("Please load data before continuing")
             else:
                 plot_data = dataPlot(restricted_matrix)
+        
+        if user_input == 5:
+            print('Quit programme')
+            break
             
-    print('Quit programme')
+    
     

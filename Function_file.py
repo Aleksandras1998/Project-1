@@ -8,14 +8,16 @@ def dataLoad(filename):
     
     try:
         data=np.loadtxt(filename)
-        print(chr(95)*30)
+        print(chr(95)*47)
         print(f'Data loaded successfully from {filename}')
-        print(chr(8254)*30)
+        print(chr(8254)*47)
     
     except:
         if not filename.endswith('.txt'): #Check file data type
+            print()
             print(f'{filename} needs to have .txt extension')
             print(f'Error loading data from {filename}. Please try again')
+        
         return None
         
     #Creating dictionary that assign the numeric code to bacteria
