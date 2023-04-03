@@ -62,12 +62,14 @@ if __name__ == '__main__':
                 print("Please load data before continuing") #if not, print
             else:
                 restricted_matrix = filter_data(restricted_matrix, matrix) #result come from function filter_data
+                print(restricted_matrix)
 #==============================================================================
 
                     #[3]rd selection - display statistics
                 
         elif user_input == 3: 
-            if len(matrix)== 0 :
+            #if len(matrix)== 0 :
+            if not data_loaded:
                 print("Please load data before continuing")
             else:
                 statistic = ["Mean Temperature",
