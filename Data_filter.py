@@ -3,7 +3,8 @@ import numpy as np
 #Filtering part by it's bacteria type, growth rate, or both. Obtained matrix 
 #will be used to do statistical calculations
 def filter_data(restricted_matrix, matrix):
-#==============================================================================    
+#==============================================================================
+
     while True:
         try:
             user_input_filterdata = int(input('Please insert a number from 1 to 4 \n'+
@@ -34,12 +35,10 @@ def filter_data(restricted_matrix, matrix):
                                                     f'[3] = {bacteria_dict[3] }\n' +
                                                     f'[4] = {bacteria_dict[4] }\n' +
                                                     '[5] Quit current menu\n'))
+                
                 # if user_inputBacteriatype not in bacteria_dict.keys():
                 #     print("Please select existing Bacteria type")  # Should be an option to override restricted_matrix to the new one, after I select another bacteria type
                 #     continue
-                
-                # elif user_inputBacteriatype == 5:
-                #     break
 
                 # restricted_matrix = np.array([row for row in restricted_matrix if row[2] == user_inputBacteriatype])
                 # print(f'Filtered by bacteria type:{bacteria_dict[user_inputBacteriatype]}')
@@ -48,6 +47,8 @@ def filter_data(restricted_matrix, matrix):
                 # while True:
                 #     user_input_continue=input('Do you want to select another bacteria type? (y/n)')
                 #     if user_input_continue.lower()=='y':
+                #         restricted_matrix_copy=np.array([row for row in restricted_matrix if row[2] == user_inputBacteriatype])
+                #         restricted_matrix=np.concatenate(restricted_matrix,restricted_matrix_copy)
                 #         break
                 #     elif user_input_continue.lower()=='n':
                 #         return restricted_matrix
@@ -55,6 +56,7 @@ def filter_data(restricted_matrix, matrix):
                 #         print('Please enter a valid input(y/n)')
                 #         continue
                 
+            
                 if user_inputBacteriatype not in bacteria_dict.keys():
                     print("Please select existing Bacteria type")
                     continue
@@ -62,7 +64,13 @@ def filter_data(restricted_matrix, matrix):
 
                 restricted_matrix = np.array([row for row in restricted_matrix if row[2] == user_inputBacteriatype])
                 print(f'Filtered by bacteria type:{bacteria_dict[user_inputBacteriatype]}')
-                break           
+                print('If needed, choose option [2] to apply growth rate filter')
+                break
+                
+            
+            #How to make, so that if user chooses to use Filter Bacteria type
+            #Once again, they can be combined all together. Data of 1 bacteria
+            #plus data of second
       
             
         elif user_input_filterdata == 2:
