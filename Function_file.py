@@ -42,11 +42,11 @@ def dataLoad(filename):
             matrix = np.vstack([matrix, rows])
         else:
             if not(10<=data[i,0]<=60):
-                print(f"Sample {i+1} has invalid temperature")
+                print(f"\u2022Sample {i+1} has invalid temperature")
             if data[i,1]<0:
-                print(f"Sample {i+1} has invalid growth rate")
+                print(f"\u2022Sample {i+1} has invalid growth rate")
             if data[i,2] not in bacteria_dict:
-                print(f"Sample {i+1} does not correspond to any bacteria")
+                print(f"\u2022Sample {i+1} does not correspond to any bacteria")
                 
     #Save the matrix data to a new txt file
     saveData("Filtered bacteria data.txt", matrix)

@@ -5,6 +5,9 @@ from Function_file import dataStatistics, dataPlot
 import numpy as np 
 
 if __name__ == '__main__':
+
+#==============================================================================
+                    #Creating main menu for user input
     
     matrix = np.zeros(0)
     restricted_matrix = np.zeros(0)
@@ -21,43 +24,47 @@ if __name__ == '__main__':
                                     '>>'))
             if user_input> 5 or user_input < 1 :
                 print()
-                raise ValueError('Please select a number from main menu')
+                print('+'+'-'*40+'+')
+                print('|' + ' '*16 + 'WARNING!' + ' '*16 + '|')
+                raise ValueError('|' + ' ' + 'Please select a number from main menu' + ' '*2 + '|')
         except ValueError as e:
             print(e)
+            #print('+' + '-'*40 + '+')
        
             continue
-    # while True:
-    #     user_input = int(input('Enter a number from 1 to 5: \n'+
-    #                            '[1] LoadData\n' +
-    #                            '[2] Filter data\n' +
-    #                            '[3] Display statistics\n' +
-    #                            '[4] Generate plots\n' +
-    #                            '[5] Quit\n'+
-    #                            '>>'))
-    #     if user_input < 1 or user_input > 5:
-    #         print("Please select a number from the filter menu")
-    #         continue
-    # # handle valid input here
+#==============================================================================        
+        # matrix=np.zeros(0)
+        # restricted_matrix=np.zeros(0) 
+        #This code linescannot be inside while loop, 
+        #since they are only executed if the user enters an invalid value for 
+        #'User_input' and the 'continue' statement is executed. 
+#==============================================================================
 
-        
-        '''if user_input == 5:
-            print('Quit programme')
-            break'''
-
+                    #[1]st selection-Uploading data
+                            
         if user_input == 1: #LoadData to analise
-            
-            matrix = load_data()
             #print(matrix)
-            restricted_matrix = np.copy(matrix)
+            matrix = load_data() #matrix comes from load_data function
+            #print(matrix)
+            restricted_matrix = np.copy(matrix) #making copy of this matrix
+            #data_loaded=True
 
-            
-        elif user_input == 2: # filter data
-            if len(matrix)== 0 :
-                print("Please load data before continuing")
+#==============================================================================
+
+                    #[2]nd selection - Filtering part
+           
+        elif user_input == 2:
+            #print(matrix)
+            #print(restricted_matrix)
+            if len(matrix)== 0 : # checking if data was uploaded  
+                print("Please load data before continuing") #if not, print
             else:
-                restricted_matrix = filter_data(restricted_matrix, matrix)
+                restricted_matrix = filter_data(restricted_matrix, matrix) #result come from function filter_data
+#==============================================================================
+
+                    #[3]rd selection - display statistics
                 
-        elif user_input == 3: #display Statistics in the selected range
+        elif user_input == 3: 
             if len(matrix)== 0 :
                 print("Please load data before continuing")
             else:
