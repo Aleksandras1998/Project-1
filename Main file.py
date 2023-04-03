@@ -11,6 +11,7 @@ if __name__ == '__main__':
     
     matrix = np.zeros(0)
     restricted_matrix = np.zeros(0)
+    data_loaded=False
     
     while True:                                                                 
         
@@ -29,7 +30,7 @@ if __name__ == '__main__':
                 raise ValueError('|' + ' ' + 'Please select a number from main menu' + ' '*2 + '|')
         except ValueError as e:
             print(e)
-            #print('+' + '-'*40 + '+')
+            print('+' + '-'*40 + '+')
        
             continue
 #==============================================================================        
@@ -47,7 +48,7 @@ if __name__ == '__main__':
             matrix = load_data() #matrix comes from load_data function
             #print(matrix)
             restricted_matrix = np.copy(matrix) #making copy of this matrix
-            #data_loaded=True
+            data_loaded=True
 
 #==============================================================================
 
@@ -56,7 +57,8 @@ if __name__ == '__main__':
         elif user_input == 2:
             #print(matrix)
             #print(restricted_matrix)
-            if len(matrix)== 0 : # checking if data was uploaded  
+            #if len(matrix)== 0 : # checking if data was uploaded
+            if not data_loaded:
                 print("Please load data before continuing") #if not, print
             else:
                 restricted_matrix = filter_data(restricted_matrix, matrix) #result come from function filter_data
