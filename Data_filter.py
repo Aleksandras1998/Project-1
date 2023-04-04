@@ -4,7 +4,8 @@ import numpy as np
 #will be used to do statistical calculations
 def filter_data(restricted_matrix, matrix):
 #==============================================================================
-
+                            #This is main filter menu
+#==============================================================================
     while True:
         try:
             user_input_filterdata = int(input('Please insert a number from 1 to 4 \n'+
@@ -20,6 +21,8 @@ def filter_data(restricted_matrix, matrix):
             print("Please insert a number in the selected range") # check main script, and do the same display window
        
             continue
+#==============================================================================
+                #Filtering data based on the type of bacteria
 #==============================================================================              
         if user_input_filterdata == 1:
             bacteria_dict = {
@@ -34,7 +37,7 @@ def filter_data(restricted_matrix, matrix):
                                                     f'[2] = {bacteria_dict[2] }\n' +
                                                     f'[3] = {bacteria_dict[3] }\n' +
                                                     f'[4] = {bacteria_dict[4] }\n' +
-                                                    '[5] Quit current menu\n'))
+                                                    '[5] = Quit current menu\n'))
                 
                 # if user_inputBacteriatype not in bacteria_dict.keys():
                 #     print("Please select existing Bacteria type")  # Should be an option to override restricted_matrix to the new one, after I select another bacteria type
@@ -56,11 +59,13 @@ def filter_data(restricted_matrix, matrix):
                 #         print('Please enter a valid input(y/n)')
                 #         continue
                 
-            
-                if user_inputBacteriatype not in bacteria_dict.keys():
+                
+                if user_inputBacteriatype == 5:
+                    break
+                
+                elif user_inputBacteriatype not in restricted_matrix[:,2]:
                     print("Please select existing Bacteria type")
                     continue
-                
 
                 restricted_matrix = np.array([row for row in restricted_matrix if row[2] == user_inputBacteriatype])
                 print(f'Filtered by bacteria type:{bacteria_dict[user_inputBacteriatype]}')
@@ -71,7 +76,9 @@ def filter_data(restricted_matrix, matrix):
             #How to make, so that if user chooses to use Filter Bacteria type
             #Once again, they can be combined all together. Data of 1 bacteria
             #plus data of second
-      
+#==============================================================================
+                    #Filtering data based on the growth rate
+#==============================================================================      
             
         elif user_input_filterdata == 2:
             while True :
@@ -97,5 +104,3 @@ def filter_data(restricted_matrix, matrix):
             restricted_matrix = np.copy(matrix)
         elif user_input_filterdata == 4:
             return restricted_matrix
-        elif user_inputBacteriatype == 5:
-            break
