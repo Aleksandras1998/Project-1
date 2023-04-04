@@ -40,8 +40,8 @@ if __name__ == '__main__':
         #since they are only executed if the user enters an invalid value for 
         #'User_input' and the 'continue' statement is executed. 
 #==============================================================================
-
                     #[1]st selection-Uploading data
+#==============================================================================
                             
         if user_input == 1: #LoadData to analise
             #print(matrix)
@@ -51,8 +51,8 @@ if __name__ == '__main__':
             data_loaded=True
 
 #==============================================================================
-
                     #[2]nd selection - Filtering part
+#==============================================================================
            
         elif user_input == 2:
             #print(matrix)
@@ -63,12 +63,13 @@ if __name__ == '__main__':
             else:
                 restricted_matrix = filter_data(restricted_matrix, matrix) #result come from function filter_data
                 print(restricted_matrix)
+                print(f'Combined filters: {len(restricted_matrix)} rows remaining')
+                
 #==============================================================================
-
                     #[3]rd selection - display statistics
+#==============================================================================
                 
         elif user_input == 3: 
-            #if len(matrix)== 0 :
             if not data_loaded:
                 print("Please load data before continuing")
             else:
@@ -97,15 +98,18 @@ if __name__ == '__main__':
                     else:
                         print("Please select an existing statistical function")
             
+#==============================================================================
+                #[4]th selection - Generating plot
+#==============================================================================
 
-        elif user_input == 4: #Generate plots
-            if len(matrix)== 0 :
+        elif user_input == 4: 
+            if not data_loaded:
                 print("Please load data before continuing")
             else:
                 plot_data = dataPlot(restricted_matrix)
         
         if user_input == 5:
-            print('Quit programme')
+            print('The program has been terminated')
             break
             
     
