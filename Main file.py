@@ -16,34 +16,38 @@ if __name__ == '__main__':
     while True:                                                                 
         
         try:
-            user_input = int(input('Enter a number from 1 to 5: \n'+
+            user_input = int(input(' '*8+'┃'+ 'Main menu┃\n'+
+                                   '┏' + '━'*28 + '┓\n'+
+                                   '┃ Enter a number from 1 to 5 ┃\n'+
+                                   '┗' + '━'*28 + '┛\n'+
                                     '[1] LoadData\n' +
                                     '[2] Filter data\n' +
                                     '[3] Display statistics\n' +
                                     '[4] Generate plots\n' +
-                                    '[5] Quit\n'+
+                                    '[5] Quit program\n'+
                                     '>>'))
             if user_input> 5 or user_input < 1 :
                 print()
                 print('+'+'-'*40+'+')
                 print('|' + ' '*16 + 'WARNING!' + ' '*16 + '|')
-                raise ValueError('|' + ' ' + 'Please select a number from main menu' + ' '*2 + '|')
+                raise ValueError('|' + ' '*5 + 'Select a number from main menu' + ' '*5 + '|')
         except ValueError as e:
             print(e)
+            print('|' + ' '*12 + 'Please try again' + ' '*12 + '|')
             print('+' + '-'*40 + '+')
        
             continue
 #==============================================================================        
         # matrix=np.zeros(0)
         # restricted_matrix=np.zeros(0) 
-        #This code linescannot be inside while loop, 
+        #This code lines cannot be inside while loop, 
         #since they are only executed if the user enters an invalid value for 
         #'User_input' and the 'continue' statement is executed. 
 #==============================================================================
                     #[1]st selection-Uploading data
 #==============================================================================
                             
-        if user_input == 1: #LoadData to analise
+        if user_input == 1: 
             #print(matrix)
             matrix = load_data() #matrix comes from load_data function
             #print(matrix)
@@ -59,9 +63,15 @@ if __name__ == '__main__':
             #print(restricted_matrix)
             #if len(matrix)== 0 : # checking if data was uploaded
             if not data_loaded:
-                print("Please load data before continuing") #if not, print
+                print()
+                print('+'+'-'*40+'+\n'+
+                      '|' + ' '*16 + 'WARNING!' + ' '*16 + '|\n'+
+                      '|' + ' '*3 + 'Please load data before continuing' + ' '*3 + '|\n'+
+                      '+' + '-'*40 + '+') #if not, print
             else:
                 restricted_matrix = filter_data(restricted_matrix, matrix) #result come from function filter_data
+                print()
+                print('Data selected:')
                 print(restricted_matrix)
                 print(f'Combined filters: {len(restricted_matrix)} rows remaining')
                 
@@ -71,13 +81,19 @@ if __name__ == '__main__':
                 
         elif user_input == 3: 
             if not data_loaded:
-                print("Please load data before continuing")
+                print()
+                print('+'+'-'*40+'+\n'+
+                      '|' + ' '*16 + 'WARNING!' + ' '*16 + '|\n'+
+                      '|' + ' '*3 + 'Please load data before continuing' + ' '*3 + '|\n'+
+                      '+' + '-'*40 + '+') #if not, print
             else:
                 statistic = ["Mean Temperature",
                     "Mean Growth rate","Std Temperature","Std Growth rate","Rows","Mean Cold Growth rate",
                     "Mean Hot Growth rate"]
                 while True:
-                    user_inputstatistics = int(input('Please select what statistical function to display\n'+
+                    user_inputstatistics = int(input('┏' + '━'*40 + '┓\n'+
+                                    '┃Please select which statistic to display┃\n'+
+                                    '┗' + '━'*40 + '┛\n'+
                                     "[1] Mean Temperature\n" +
                                     "[2] Mean Growth rate\n" +
                                     "[3] Std Temperature\n"  +
@@ -85,13 +101,16 @@ if __name__ == '__main__':
                                     "[5] Rows\n"+
                                     "[6] Mean Cold Growth rate\n" +
                                     "[7] Mean Hot Growth rate\n"+
-                                    "[8] Exit\n"))
+                                    "[8] Exit\n"+
+                                    ">>"))
                 
-                    if 0 < user_inputstatistics <= 7: 
-                        print(dataStatistics(restricted_matrix, statistic[user_inputstatistics - 1] ))
-                        print(f"{statistic[user_inputstatistics - 1]} Statistics in selected range")
-                        print(dataStatistics(matrix, statistic[user_inputstatistics - 1] ))
-                        print(f"{statistic[user_inputstatistics - 1]} Statistics for complete dataset")
+                    if 0 < user_inputstatistics <= 7:
+                        print()
+                        #print(f"\033[1m'+{statistic[user_inputstatistics - 1]} Statistics for Selected Range:"+'\033[0m')
+                        print(f"\033[1m{statistic[user_inputstatistics - 1]} Statistics for:\033[0m")
+                        print(f'• Selected Range:{dataStatistics(restricted_matrix, statistic[user_inputstatistics - 1] ):.4f}')
+                        print(f"{statistic[user_inputstatistics - 1]} Statistics for:")
+                        print(f'• Complete Dataset:{dataStatistics(matrix, statistic[user_inputstatistics - 1] ):.4f}')
                         input('Press Enter to return to menu ...\n')
                     elif user_inputstatistics == 8 :
                         break
@@ -104,7 +123,11 @@ if __name__ == '__main__':
 
         elif user_input == 4: 
             if not data_loaded:
-                print("Please load data before continuing")
+                print()
+                print('+'+'-'*40+'+\n'+
+                      '|' + ' '*16 + 'WARNING!' + ' '*16 + '|\n'+
+                      '|' + ' '*3 + 'Please load data before continuing' + ' '*3 + '|\n'+
+                      '+' + '-'*40 + '+') #if not, print
             else:
                 plot_data = dataPlot(restricted_matrix)
         

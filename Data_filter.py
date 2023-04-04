@@ -10,17 +10,24 @@ def filter_data(restricted_matrix, matrix):
 #==============================================================================
     while True:
         try:
-            user_input_filterdata = int(input('Please insert a number from 1 to 4 \n'+
+            user_input_filterdata = int(input(' '*8+'┃'+ 'Data filter menu┃\n'+
+                                    '┏' + '━'*36 + '┓\n'+
+                                    '┃ Please insert a number from 1 to 4 ┃\n'+
+                                    '┗' + '━'*36 + '┛\n'+
                                     '[1] Filter Bacteria type\n' +
                                     '[2] Filter growth rate\n' +
                                     '[3] Reset\n' +
-                                    '[4] Return to main menu\n'))
+                                    '[4] Return to main menu\n'+
+                                    '>>'))
             if user_input_filterdata > 4 or user_input_filterdata < 1:
                 print()
-                raise ValueError('Please select a number from the filter menu')
+                print('+'+'-'*40+'+')
+                print('|' + ' '*16 + 'WARNING!' + ' '*16 + '|')
+                raise ValueError('|' + ' '*2 + 'Select a number from the filter menu' + ' '*2 + '|')
         except ValueError as j:
             print(j) 
-            print("Please insert a number in the selected range") # check main script, and do the same display window
+            print('|' + ' '*12 + 'Please try again' + ' '*12 + '|')
+            print('+' + '-'*40 + '+') # check main script, and do the same display window
        
             continue
 #==============================================================================
@@ -38,25 +45,34 @@ def filter_data(restricted_matrix, matrix):
 #             combined_matrix=None
 # =============================================================================
             while True:
-                user_inputBacteriatype = int(input('Please select a Bacteria type\n'+
-                                                    f'[1] = {bacteria_dict[1] }\n' +
-                                                    f'[2] = {bacteria_dict[2] }\n' +
-                                                    f'[3] = {bacteria_dict[3] }\n' +
-                                                    f'[4] = {bacteria_dict[4] }\n' +
-                                                    '[5] = Quit current menu\n'))
+                user_inputBacteriatype = int(input('┏' + '━'*29 + '┓\n'+
+                                                   '┃Please select a Bacteria type┃\n'+
+                                                   '┗' + '━'*29 + '┛\n'+
+                                                   f'[1] = {bacteria_dict[1] }\n' +
+                                                   f'[2] = {bacteria_dict[2] }\n' +
+                                                   f'[3] = {bacteria_dict[3] }\n' +
+                                                   f'[4] = {bacteria_dict[4] }\n' +
+                                                   '[5] = Quit current menu\n'+
+                                                   '>>'))
                 
                 if user_inputBacteriatype == 5:
                     break
                 
                 elif user_inputBacteriatype not in restricted_matrix[:,2]:
-                    print("Please select existing Bacteria type")
+                    print()
+                    print('+'+'-'*40+'+')
+                    print('|' + ' '*16 + 'WARNING!' + ' '*16 + '|')
+                    print('|' + ' '*2 + 'Please select existing Bacteria type' + ' '*2 + '|')
+                    print('+' + '-'*40 + '+')
                     continue
                 
 
                 #Filter the data based on the selected bacteria type
                 restricted_matrix = np.array([row for row in restricted_matrix if row[2] == user_inputBacteriatype])
-                print(f'Filtered by bacteria type:{bacteria_dict[user_inputBacteriatype]}')
+                print()
+                print(f'Filtered by bacteria type: {bacteria_dict[user_inputBacteriatype]}')
                 print('If needed, enter option [2] to apply growth rate filter')
+                print('Enter option [3] to reset filtered data')
                 break
             
 #=============================================================================
@@ -99,7 +115,11 @@ def filter_data(restricted_matrix, matrix):
             
         elif user_input_filterdata == 2:
             while True :
-                user_inputGrowthrate = input('Please select a valid Growth rate range (dec-dec)\n')
+                user_inputGrowthrate = input('┏' + '━'*51 + '┓\n'+
+                                             '┃ Please select a valid Growth rate range (dec-dec) ┃\n'+
+                                             '┗' + '━'*51 + '┛\n'+
+                                             '>>')
+                                             #'Please select a valid Growth rate range (dec-dec)\n')
                 user_inputGrowthrate = re.findall(r'\d+(?:\.\d+)?', user_inputGrowthrate) #give an opportunity to enter like 0.1&0.5 or any other symbol between, and still will recognise that
                 lowerBound = float(user_inputGrowthrate[0])
                 upperBound = float(user_inputGrowthrate[1])
@@ -120,8 +140,13 @@ def filter_data(restricted_matrix, matrix):
                             #print('Restricted matrix:\n', restricted_matrix)
                             ##Save the restricted matrix data to a new text file
                             #np.savetxt(restricted_matrix,fmt='%g')
-                else: 
-                    print("Please input existing Growth rate range ")
+                else:
+                    print()
+                    print('+'+'-'*41+'+')
+                    print('|' + ' '*17 + 'WARNING!' + ' '*16 + '|')
+                    print('|' + ' '*1 + 'Please input existing Growth rate range' + ' '*1 + '|')
+                    print('+' + '-'*41 + '+')
+                    
                     continue
         elif user_input_filterdata == 3:
             restricted_matrix = np.copy(matrix)

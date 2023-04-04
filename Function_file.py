@@ -8,15 +8,20 @@ def dataLoad(filename):
     
     try:
         data=np.loadtxt(filename)
-        print(chr(95)*47)
-        print(f'Data loaded successfully from {filename}')
-        print(chr(8254)*47)
+        
+        print('╔' + '═'*49 + '╗\n'+
+             f'║ Data loaded successfully from {filename} ║\n'+
+              '╚' + '═'*49 + '╝')
     
     except:
         if not filename.endswith('.txt'): #Check file data type
+        
             print()
-            print(f'{filename} needs to have .txt extension')
-            print(f'Error loading data from {filename}. Please try again')
+            print('+'+'-'*34+'+\n'+
+                  f'| {" " * 0}{filename} needs to have .txt extension{" " * 0} |\n'+
+                  f'| {" " * 2}Error loading data from {filename}{" " * 3} |\n'+
+                  '|' + ' '*9 + 'Please try again' + ' '*9 + '|\n'+
+                  '+'+'-'*34+'+')
         
         return None
         
@@ -31,7 +36,9 @@ def dataLoad(filename):
     matrix=np.empty([0,3])
     #print(matrix)
     
-    print('Description of error:')
+    print('~'*20+'\n'+
+          'Description of error:\n'+
+          '~'*20+'\n')
     
     #Creating the loop which read the rows of the data 
     for i in range(len(data[:,0])):
