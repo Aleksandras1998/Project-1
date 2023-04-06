@@ -36,9 +36,9 @@ def dataLoad(filename):
     matrix=np.empty([0,3])
     #print(matrix)
     
-    print('~'*20+'\n'+
-          'Description of error:\n'+
-          '~'*20+'\n')
+    #print('~'*20+'\n'+
+         # 'Description of error:\n'+
+         # '~'*20+'\n')
     
     #Creating the loop which read the rows of the data 
     for i in range(len(data[:,0])):
@@ -130,8 +130,8 @@ def dataPlot(data):
     x=Bacteria_name
     #print(x)
     
-    #Creating loop to counts how many bacterias of different type we have
-    
+    #Creating loop to count how many bacterias of different type we have
+    print(statsdata)
     for j in range(len(statsdata[:,0])):
         
         if statsdata[j,2] == 1:
@@ -143,7 +143,7 @@ def dataPlot(data):
         elif statsdata[j,2] == 4:
             fourth_count+=1
         y=np.array([first_count,second_count,third_count,fourth_count])
-        
+   
     # First sublot - bacteria counts
      
     axs[0].bar(x,y)
@@ -221,3 +221,4 @@ def dataPlot(data):
 
 
     
+

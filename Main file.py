@@ -12,7 +12,7 @@ if __name__ == '__main__':
     matrix = np.zeros(0)
     restricted_matrix = np.zeros(0)
     data_loaded=False
-    
+    print("To quit the programme at any time outside the main menu please press ctrl + C")
     while True:                                                                 
         
         try:
@@ -20,6 +20,7 @@ if __name__ == '__main__':
                                    '┏' + '━'*28 + '┓\n'+
                                    '┃ Enter a number from 1 to 5 ┃\n'+
                                    '┗' + '━'*28 + '┛\n'+
+                                    'To quit the programme at any time outside the main menu please press ctrl + C\n'
                                     '[1] LoadData\n' +
                                     '[2] Filter data\n' +
                                     '[3] Display statistics\n' +
@@ -101,7 +102,7 @@ if __name__ == '__main__':
                                     "[5] Rows\n"+
                                     "[6] Mean Cold Growth rate\n" +
                                     "[7] Mean Hot Growth rate\n"+
-                                    "[8] Exit\n"+
+                                    "[8] Return to main menu\n"+
                                     ">>"))
                 
                     if 0 < user_inputstatistics <= 7:
@@ -137,4 +138,4 @@ if __name__ == '__main__':
             
     
     
-# test commit
+# test commit1
